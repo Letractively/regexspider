@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExSpider.Spider", "RegExSpider.Spider\RegExSpider.Spider.csproj", "{B3092F24-AFB7-4D19-95DC-6A38805A1084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExSpider.Configuration", "RegExSpider.Configuration\RegExSpider.Configuration.csproj", "{BA9D0A8B-4679-45B0-8A32-725F7BB8B5E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExSpider.Storage", "RegExSpider.Storage\RegExSpider.Storage.csproj", "{D7698CBB-A2D7-42AF-AA1F-68A4BCB49947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExSpider.TestApp", "RegExSpider.TestApp\RegExSpider.TestApp.csproj", "{5F46B695-7EA8-4E32-AB04-332AEA2F4F67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3092F24-AFB7-4D19-95DC-6A38805A1084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3092F24-AFB7-4D19-95DC-6A38805A1084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3092F24-AFB7-4D19-95DC-6A38805A1084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3092F24-AFB7-4D19-95DC-6A38805A1084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9D0A8B-4679-45B0-8A32-725F7BB8B5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9D0A8B-4679-45B0-8A32-725F7BB8B5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9D0A8B-4679-45B0-8A32-725F7BB8B5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9D0A8B-4679-45B0-8A32-725F7BB8B5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7698CBB-A2D7-42AF-AA1F-68A4BCB49947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7698CBB-A2D7-42AF-AA1F-68A4BCB49947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7698CBB-A2D7-42AF-AA1F-68A4BCB49947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7698CBB-A2D7-42AF-AA1F-68A4BCB49947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F46B695-7EA8-4E32-AB04-332AEA2F4F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F46B695-7EA8-4E32-AB04-332AEA2F4F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F46B695-7EA8-4E32-AB04-332AEA2F4F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F46B695-7EA8-4E32-AB04-332AEA2F4F67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

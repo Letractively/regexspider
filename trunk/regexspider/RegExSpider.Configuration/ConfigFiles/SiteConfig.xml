@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Site>
+  <Name>Site name</Name>
+  <RootUrl>http://amazon.com/</RootUrl>
+
+  <CrawlUrlsConfig>
+
+    <MaxDepth>3</MaxDepth>
+
+    <StartPoint>http://amazon.com/</StartPoint>    
+
+    <NoFollow>
+      <RegEx>nf regex 1</RegEx>
+      <RegEx>nf regex 2</RegEx>
+    </NoFollow>
+
+  </CrawlUrlsConfig>
+
+
+  <PageExtractionElements>
+    <Element Name="Head tag" RegEx="&lt;head&gt;([.\s\S]*?)&lt;/head&gt;">
+      <Field Name="Title tag" RegEx="&lt;(title[.\s\S]*?)&lt;/title&gt;" />      
+    </Element>
+  </PageExtractionElements>
+
+</Site>
