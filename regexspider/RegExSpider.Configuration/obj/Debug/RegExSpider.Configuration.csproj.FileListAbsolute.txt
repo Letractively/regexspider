@@ -1,7 +1,0 @@
-D:\Work\regexspider\RegExSpider.Configuration\bin\Debug\RegExSpider.Configuration.dll
-D:\Work\regexspider\RegExSpider.Configuration\bin\Debug\RegExSpider.Configuration.pdb
-D:\Work\regexspider\RegExSpider.Configuration\bin\Debug\RegExSpider.Storage.dll
-D:\Work\regexspider\RegExSpider.Configuration\bin\Debug\RegExSpider.Storage.pdb
-D:\Work\regexspider\RegExSpider.Configuration\obj\Debug\ResolveAssemblyReference.cache
-D:\Work\regexspider\RegExSpider.Configuration\obj\Debug\RegExSpider.Configuration.dll
-D:\Work\regexspider\RegExSpider.Configuration\obj\Debug\RegExSpider.Configuration.pdb
