@@ -1,0 +1,5 @@
+D:\Work\regexspider\RegExSpider.Storage\bin\Debug\RegExSpider.Storage.dll
+D:\Work\regexspider\RegExSpider.Storage\bin\Debug\RegExSpider.Storage.pdb
+D:\Work\regexspider\RegExSpider.Storage\obj\Debug\ResolveAssemblyReference.cache
+D:\Work\regexspider\RegExSpider.Storage\obj\Debug\RegExSpider.Storage.dll
+D:\Work\regexspider\RegExSpider.Storage\obj\Debug\RegExSpider.Storage.pdb
