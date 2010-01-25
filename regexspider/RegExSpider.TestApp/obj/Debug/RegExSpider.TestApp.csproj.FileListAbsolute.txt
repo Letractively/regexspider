@@ -1,0 +1,13 @@
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.TestApp.exe
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.TestApp.pdb
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.Configuration.dll
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.Configuration.pdb
+D:\Work\RegExSpider\RegExSpider.TestApp\obj\Debug\ResolveAssemblyReference.cache
+D:\Work\RegExSpider\RegExSpider.TestApp\obj\Debug\RegExSpider.TestApp.Properties.Resources.resources
+D:\Work\RegExSpider\RegExSpider.TestApp\obj\Debug\RegExSpider.TestApp.csproj.GenerateResource.Cache
+D:\Work\RegExSpider\RegExSpider.TestApp\obj\Debug\RegExSpider.TestApp.exe
+D:\Work\RegExSpider\RegExSpider.TestApp\obj\Debug\RegExSpider.TestApp.pdb
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.Spider.dll
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.Storage.dll
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.Spider.pdb
+D:\Work\RegExSpider\RegExSpider.TestApp\bin\Debug\RegExSpider.Storage.pdb
