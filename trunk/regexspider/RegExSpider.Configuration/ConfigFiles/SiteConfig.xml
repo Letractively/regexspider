@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Site>
   <Name>Site name</Name>
-  <RootUrl>http://amazon.com/</RootUrl>
+  <RootUrl>http://yahoo.com/</RootUrl>
 
   <CrawlUrlsConfig>
 
     <MaxDepth>3</MaxDepth>
 
-    <StartPoint>http://amazon.com/</StartPoint>    
+    <StartPoint>http://yahoo.com/</StartPoint>    
 
     <NoFollow>
       <RegEx>nf regex 1</RegEx>
