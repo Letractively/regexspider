@@ -33,12 +33,12 @@ namespace RegExSpider.Spider
         {
             //save the params
             m_SiteEntity = crawlSite;
-            m_CrawlersCapacity = crawlersCapacity;            
+            m_CrawlersCapacity = crawlersCapacity;
 
             //init the storage
             m_LinksStorage = new RegExSpider.Storage.XmlProvider.LinksStorage();
-            m_ElementStorage = new RegExSpider.Storage.XmlProvider.ElementStorage();            
-            
+            m_ElementStorage = new RegExSpider.Storage.XmlProvider.ElementStorage();
+
 
             m_LinksStorage.InitializeStorage();
             m_ElementStorage.InitializeStorage();
@@ -68,6 +68,16 @@ namespace RegExSpider.Spider
             m_WorkingThread.Start();
         }
 
+        public void StopCrawling()
+        {
+            m_WorkingThread.Abort();
+
+            while (m_WorkingThreads > 0) { }
+
+            m_LinksStorage.FinalizeStorage();
+            m_ElementStorage.FinalizeStorage();
+        }
+
         void ScanSite()
         {
             IList<LinkEntity> linksQueue = m_LinksStorage.PoolWaitingUrls(SCAN_CHUNK_SIZE, m_SiteEntity.MaxDepth); ;
@@ -77,8 +87,8 @@ namespace RegExSpider.Spider
                 if (m_WorkingThreads > 0 && linksQueue.Count == 0)
                 {
                     m_AutoResetEvent.WaitOne();
-                } 
-                   
+                }
+
                 if (linksQueue.Count > 0)
                 {
                     foreach (var item in linksQueue)
@@ -86,7 +96,7 @@ namespace RegExSpider.Spider
                         if (m_WorkingThreads > m_CrawlersCapacity)
                         {
                             m_AutoResetEvent.WaitOne();
-                        }  
+                        }
 
                         PageHandler handler = new PageHandler(m_SiteEntity);
                         handler.OnHandlingFinished += new PageHandler.HandlingFinished(handler_OnHandlingFinished);
@@ -95,7 +105,7 @@ namespace RegExSpider.Spider
 
                         Interlocked.Increment(ref m_WorkingThreads);
                         ThreadPool.QueueUserWorkItem(new WaitCallback(handler.HandlePage), item);
-                    }                    
+                    }
                 }
 
                 linksQueue = m_LinksStorage.PoolWaitingUrls(SCAN_CHUNK_SIZE, m_SiteEntity.MaxDepth);
@@ -119,7 +129,7 @@ namespace RegExSpider.Spider
             foreach (var item in links)
             {
                 if (m_LinksStorage.IsExists(item) == false)
-                    m_LinksStorage.InsertLink(new LinkEntity(handlerDepth+1, item));
+                    m_LinksStorage.InsertLink(new LinkEntity(handlerDepth + 1, item));
             }
         }
 
@@ -129,7 +139,7 @@ namespace RegExSpider.Spider
             m_LinksStorage.LinkScanned(link);
             m_AutoResetEvent.Set();
 
-            OnReportStatus(m_ElementStorage.GetStatus(), m_LinksStorage.GetStatus());                        
+            OnReportStatus(m_ElementStorage.GetStatus(), m_LinksStorage.GetStatus());
         }
     }
 }
