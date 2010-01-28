@@ -27,6 +27,9 @@ namespace RegExSpider.Spider
 
         private AutoResetEvent m_AutoResetEvent = new AutoResetEvent(false);
 
+        private bool m_Paused = false;
+        private AutoResetEvent m_PauseResetEvent = new AutoResetEvent(false);
+
         private object m_SyncObj = new object();
 
         public void Initialize(SiteEntity crawlSite, int crawlersCapacity)
@@ -78,6 +81,17 @@ namespace RegExSpider.Spider
             m_ElementStorage.FinalizeStorage();
         }
 
+        public void PauseCrawling()
+        {
+            m_Paused = true;
+        }
+
+        public void ResumeCrawling()
+        {
+            m_Paused = false;
+            m_PauseResetEvent.Set();
+        }
+
         void ScanSite()
         {
             IList<LinkEntity> linksQueue = m_LinksStorage.PoolWaitingUrls(SCAN_CHUNK_SIZE, m_SiteEntity.MaxDepth); ;
@@ -96,6 +110,11 @@ namespace RegExSpider.Spider
                         if (m_WorkingThreads > m_CrawlersCapacity)
                         {
                             m_AutoResetEvent.WaitOne();
+                        }
+
+                        if (m_Paused)
+                        {
+                            m_PauseResetEvent.WaitOne();
                         }
 
                         PageHandler handler = new PageHandler(m_SiteEntity);
