@@ -39,14 +39,22 @@ namespace RegExSpider.Spider
         public static List<string> GetWebPageLinks(string rootUrl, string data)
         {
             List<string> retList = new List<string>();
+            Uri rootUri = new Uri(rootUrl);
             MatchCollection mc = GetAllRegexMatches(data, "href=\"(?<LinkURL>.*?)\"");
             GroupCollection gc;
 
             foreach (Match m in mc)
             {
                 gc = m.Groups;
-                if (!retList.Contains(rootUrl + gc["LinkURL"].Value))
-                    retList.Add(rootUrl + gc["LinkURL"].Value);
+
+                Uri result;
+                if (Uri.TryCreate(rootUri, gc["LinkURL"].Value, out result))
+                {
+                    if (!retList.Contains(result.AbsoluteUri) && result.AbsoluteUri.StartsWith(rootUri.AbsoluteUri))
+                    {
+                        retList.Add(result.AbsoluteUri);
+                    }
+                }
             }
 
             return retList;
