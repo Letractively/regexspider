@@ -1,26 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Site>
   <Name>Site name</Name>
-  <RootUrl>http://amazon.com/</RootUrl>
+  <RootUrl>http://code.google.com</RootUrl>
 
   <CrawlUrlsConfig>
 
-    <MaxDepth>3</MaxDepth>
+    <MaxDepth>0</MaxDepth>
 
-    <StartPoint>http://amazon.com/</StartPoint>    
+    <StartPoint>http://code.google.com/hosting/search?q=spider&amp;btn=Search+projects</StartPoint>    
 
     <NoFollow>
-      <RegEx>nf regex 1</RegEx>
-      <RegEx>nf regex 2</RegEx>
+      <RegEx>Not implemented</RegEx>
+      <RegEx>Not implemented</RegEx>
     </NoFollow>
 
   </CrawlUrlsConfig>
 
 
   <PageExtractionElements>
-    <Element Name="Head tag" RegEx="&lt;head&gt;([.\s\S]*?)&lt;/head&gt;">
-      <Field Name="Title tag" RegEx="&lt;(title[.\s\S]*?)&lt;/title&gt;" />      
-    </Element>
+    <Element Name="SpiderResult" RegEx="&lt;div class=&quot;name&quot;&gt;([.\s\S]*?)&lt;div class=&quot;labels&quot;&gt;">
+      <Field Name="Title" RegEx="&gt;([.\s\S]*?)&lt;/a&gt;" />
+      <Field Name="Description" RegEx="&lt;div&gt;([.\s\S]*?)&lt;/div&gt;" />
+    </Element>    
   </PageExtractionElements>
 
 </Site>
