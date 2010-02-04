@@ -10,8 +10,7 @@
     <StartPoint>http://code.google.com/hosting/search?q=spider&amp;btn=Search+projects</StartPoint>    
 
     <NoFollow>
-      <RegEx>Not implemented</RegEx>
-      <RegEx>Not implemented</RegEx>
+      <RegEx>(start=10)</RegEx>      
     </NoFollow>
 
   </CrawlUrlsConfig>
