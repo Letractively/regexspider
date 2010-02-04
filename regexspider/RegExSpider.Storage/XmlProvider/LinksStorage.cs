@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using RegExSpider.Storage.Entities;
+using System.IO;
 
 namespace RegExSpider.Storage.XmlProvider
 {
@@ -24,6 +25,7 @@ namespace RegExSpider.Storage.XmlProvider
             m_WaitingLinks = new List<LinkEntity>();
             m_ScannedLinks = new List<LinkEntity>();
 
+            File.Delete("links.xml");
             m_XmlTextWriter = new XmlTextWriter("links.xml", Encoding.UTF8);
             
             m_XmlTextWriter.Formatting = Formatting.Indented;
@@ -38,9 +40,12 @@ namespace RegExSpider.Storage.XmlProvider
         {
             lock (m_SyncXmlWriter)
             {
-                m_XmlTextWriter.WriteEndElement();
-                m_XmlTextWriter.WriteEndDocument();
-                m_XmlTextWriter.Close(); 
+                if (m_XmlTextWriter.WriteState != WriteState.Closed)
+                {
+                    m_XmlTextWriter.WriteEndElement();
+                    m_XmlTextWriter.WriteEndDocument();
+                    m_XmlTextWriter.Close();
+                }
             }
         }
 

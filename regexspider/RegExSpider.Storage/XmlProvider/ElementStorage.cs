@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using RegExSpider.Storage.Entities;
+using System.IO;
 
 namespace RegExSpider.Storage.XmlProvider
 {
-    public class ElementStorage:IElementStorage
+    public class ElementStorage : IElementStorage
     {
         private XmlTextWriter m_XmlTextWriter;
         private int m_Stored = 0;
@@ -18,8 +19,9 @@ namespace RegExSpider.Storage.XmlProvider
 
         public void InitializeStorage()
         {
+            File.Delete("elements.xml");
             m_XmlTextWriter = new XmlTextWriter("elements.xml", Encoding.UTF8);
-            
+
             m_XmlTextWriter.Formatting = Formatting.Indented;
             m_XmlTextWriter.Indentation = 1;
             m_XmlTextWriter.IndentChar = ' ';
@@ -32,9 +34,12 @@ namespace RegExSpider.Storage.XmlProvider
         {
             lock (m_SyncXmlWriter)
             {
-                m_XmlTextWriter.WriteEndElement();
-                m_XmlTextWriter.WriteEndDocument();
-                m_XmlTextWriter.Close(); 
+                if (m_XmlTextWriter.WriteState != WriteState.Closed)
+                {
+                    m_XmlTextWriter.WriteEndElement();
+                    m_XmlTextWriter.WriteEndDocument();
+                    m_XmlTextWriter.Close();
+                }
             }
         }
 
@@ -70,7 +75,7 @@ namespace RegExSpider.Storage.XmlProvider
 
                 m_XmlTextWriter.WriteEndElement();
 
-                m_XmlTextWriter.WriteEndElement(); 
+                m_XmlTextWriter.WriteEndElement();
             }
 
             m_Stored++;
