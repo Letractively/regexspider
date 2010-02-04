@@ -49,4 +49,4 @@ PageExtractionElements - The container for the elements to capture.
 ^Field - A field with in the parent element to capture. Name = <Field name>, RegEx = <The Regular expression to look for with-in the parent element text>.
 fields will be saved as part of their parent element.
 
-*Please note:* All RegEx captures has to be defined as a group (in brackets).
+*Important:* All RegEx captures has to be defined as a group (in brackets).
