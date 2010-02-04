@@ -36,7 +36,14 @@ namespace RegExSpider.Spider
             
             m_HtmlContent = Network.GetHTML(link.Url);
 
-            OnFoundLinks(RegEx.GetWebPageLinks(m_SiteEntity.RootUrl, m_HtmlContent), link.Depth);
+            List<string> foundUrls = RegEx.GetWebPageLinks(m_SiteEntity.RootUrl, m_HtmlContent);
+
+            foreach (string noFollowRule in m_SiteEntity.NoFollowExpressions) //remove no follow urls.
+            {
+                foundUrls.RemoveAll(o => !string.IsNullOrEmpty(RegEx.GetRegexMatch(o, noFollowRule)));
+            }
+
+            OnFoundLinks(foundUrls,link.Depth);
 
             foreach (var extractionElement in m_SiteEntity.ExtractionElements) //extract the root elements
             {
