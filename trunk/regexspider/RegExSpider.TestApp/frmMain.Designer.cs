@@ -45,6 +45,8 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnResume = new System.Windows.Forms.Button();
+            this.txtCrawlersNum = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +134,7 @@
             this.panel1.Controls.Add(this.txtElementsFound);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtScanned);
-            this.panel1.Location = new System.Drawing.Point(6, 58);
+            this.panel1.Location = new System.Drawing.Point(6, 77);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(262, 98);
             this.panel1.TabIndex = 9;
@@ -152,13 +154,15 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.txtCrawlersNum);
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtConfig);
             this.panel2.Controls.Add(this.btnBrowse);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(262, 46);
+            this.panel2.Size = new System.Drawing.Size(262, 67);
             this.panel2.TabIndex = 10;
             // 
             // label6
@@ -175,7 +179,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 160);
+            this.btnStart.Location = new System.Drawing.Point(6, 179);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(90, 50);
             this.btnStart.TabIndex = 11;
@@ -185,7 +189,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(182, 160);
+            this.btnStop.Location = new System.Drawing.Point(182, 179);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(86, 50);
             this.btnStop.TabIndex = 12;
@@ -195,7 +199,7 @@
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(99, 160);
+            this.btnPause.Location = new System.Drawing.Point(99, 179);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(77, 22);
             this.btnPause.TabIndex = 13;
@@ -205,7 +209,7 @@
             // 
             // btnResume
             // 
-            this.btnResume.Location = new System.Drawing.Point(99, 188);
+            this.btnResume.Location = new System.Drawing.Point(99, 207);
             this.btnResume.Name = "btnResume";
             this.btnResume.Size = new System.Drawing.Size(77, 22);
             this.btnResume.TabIndex = 14;
@@ -213,11 +217,27 @@
             this.btnResume.UseVisualStyleBackColor = true;
             this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
             // 
+            // txtCrawlersNum
+            // 
+            this.txtCrawlersNum.Location = new System.Drawing.Point(119, 40);
+            this.txtCrawlersNum.Name = "txtCrawlersNum";
+            this.txtCrawlersNum.Size = new System.Drawing.Size(100, 20);
+            this.txtCrawlersNum.TabIndex = 10;
+            this.txtCrawlersNum.Text = "5";
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(4, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 16);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Crawlers number:";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 213);
+            this.ClientSize = new System.Drawing.Size(273, 233);
             this.Controls.Add(this.btnResume);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStop);
@@ -255,6 +275,8 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnResume;
+        private System.Windows.Forms.TextBox txtCrawlersNum;
+        private System.Windows.Forms.Label label7;
     }
 }
 
