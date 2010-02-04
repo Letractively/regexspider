@@ -14,7 +14,7 @@ namespace RegExSpider.TestApp
 {
     public partial class frmMain : Form
     {
-        private const int CRAWLERS = 1;
+        private int m_CrawlersNumber = 1;
         private delegate void UpdateStateDelegate(int waiting, int scanned, int elements);
         private UpdateStateDelegate UpdateStateInvoke;
 
@@ -24,14 +24,19 @@ namespace RegExSpider.TestApp
         {
             InitializeComponent();
             UpdateStateInvoke = UpdateState;
-
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            if (int.TryParse(txtCrawlersNum.Text, out m_CrawlersNumber) == false)
+            {
+                MessageBox.Show("Only round numbers as Crawlers number...", "Error");
+                return;
+            }
+
             m_Spider = new RegExSpider.Spider.Spider();
             m_Spider.OnReportStatus += new RegExSpider.Spider.Spider.ReportStatus(spider_OnReportStatus);
-            m_Spider.Initialize(ConfigReader.ReadSiteEntityXml(txtConfig.Text), CRAWLERS);
+            m_Spider.Initialize(ConfigReader.ReadSiteEntityXml(txtConfig.Text), m_CrawlersNumber);
             m_Spider.StartCrawling();
         }
 
