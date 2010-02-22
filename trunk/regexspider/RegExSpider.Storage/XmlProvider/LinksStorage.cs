@@ -20,7 +20,7 @@ namespace RegExSpider.Storage.XmlProvider
 
         #region ILinksStorage Members
 
-        public void InitializeStorage()
+        public void InitializeStorage(string[] args)
         {
             m_WaitingLinks = new List<LinkEntity>();
             m_ScannedLinks = new List<LinkEntity>();

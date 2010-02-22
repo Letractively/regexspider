@@ -11,8 +11,9 @@ namespace RegExSpider.Storage.Entities
         public int Depth { get; set; }
         public string Url { get; set; }
 
-        public LinkEntity(int depth, string url)
-        {    
+        public LinkEntity(int id, int depth, string url)
+        {
+            this.Id = id;
             this.Url = url;
             this.Depth = depth;
         }

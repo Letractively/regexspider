@@ -9,7 +9,7 @@ namespace RegExSpider.Storage
     public interface IElementStorage
     {
         //initialize the element storage
-        void InitializeStorage();
+        void InitializeStorage(string[] args);
         void FinalizeStorage();
         //insert a new element to storage
         void InsertElement(ElementEntity element);

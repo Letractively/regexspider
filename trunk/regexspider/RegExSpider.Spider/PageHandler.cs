@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RegExSpider.Storage.Entities;
 using RegExSpider.Configuration;
+using System.Threading;
 
 namespace RegExSpider.Spider
 {
@@ -20,6 +21,8 @@ namespace RegExSpider.Spider
 
         private SiteEntity m_SiteEntity;
         private string m_HtmlContent = string.Empty;
+
+        private int m_ElementCounter = 0;
 
         private List<ElementEntity> m_Results;
 
@@ -51,9 +54,14 @@ namespace RegExSpider.Spider
 
                 foreach (var item in matches)
                 {
+                    Interlocked.Increment(ref m_ElementCounter);
+
                     ElementEntity newElement = new ElementEntity();
+                    newElement.Id = m_ElementCounter;
                     newElement.Name = extractionElement.Name;
                     newElement.Value=item;
+
+                    int fieldsCounter = 0;
 
                     foreach (var field in extractionElement.Fields)
                     {
@@ -61,7 +69,10 @@ namespace RegExSpider.Spider
 
                         if (string.IsNullOrEmpty(fieldMatch) == false)
                         {
+                            fieldsCounter++;
+
                             ElementEntity newField = new ElementEntity();
+                            newField.Id = fieldsCounter;
                             newField.Name = field.Key;
                             newField.Value = fieldMatch;
 

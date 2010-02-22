@@ -25,6 +25,8 @@ namespace RegExSpider.Spider
         private Thread m_WorkingThread;
         private int m_WorkingThreads = 0;
 
+        private int m_LinksCounter = 0;
+
         private AutoResetEvent m_AutoResetEvent = new AutoResetEvent(false);
 
         private bool m_Paused = false;
@@ -38,27 +40,35 @@ namespace RegExSpider.Spider
             m_SiteEntity = crawlSite;
             m_CrawlersCapacity = crawlersCapacity;
 
-            //init the storage
-            m_LinksStorage = new RegExSpider.Storage.XmlProvider.LinksStorage();
-            m_ElementStorage = new RegExSpider.Storage.XmlProvider.ElementStorage();
+            //init the storage (XML)
+            //m_LinksStorage = new RegExSpider.Storage.XmlProvider.LinksStorage();
+            //m_ElementStorage = new RegExSpider.Storage.XmlProvider.ElementStorage();
 
+            //m_LinksStorage.InitializeStorage(null);
+            //m_ElementStorage.InitializeStorage(null);
 
-            m_LinksStorage.InitializeStorage();
-            m_ElementStorage.InitializeStorage();
+            //init the storage (MySql)
+            m_LinksStorage = new RegExSpider.Storage.MySQLProvider.LinksStorage();
+            m_ElementStorage = new RegExSpider.Storage.MySQLProvider.ElementStorage();
+
+            m_LinksStorage.InitializeStorage(new string[] { "Server=localhost;Database=regexspider;Uid=root;Pwd=tizmon;" });
+            m_ElementStorage.InitializeStorage(new string[] { "Server=localhost;Database=regexspider;Uid=root;Pwd=tizmon;" });
 
             //load base crawl urls
             if (m_SiteEntity.StartPointUrls.Count > 0)
             {
                 foreach (var item in m_SiteEntity.StartPointUrls)
                 {
+                    m_LinksCounter++;
+
                     if (m_LinksStorage.IsExists(item) == false)
-                        m_LinksStorage.InsertLink(new LinkEntity(0, item));
+                        m_LinksStorage.InsertLink(new LinkEntity(m_LinksCounter, 0, item));
                 }
             }
             else
             {
                 if (m_LinksStorage.IsExists(m_SiteEntity.RootUrl) == false)
-                    m_LinksStorage.InsertLink(new LinkEntity(0, m_SiteEntity.RootUrl));
+                    m_LinksStorage.InsertLink(new LinkEntity(m_LinksCounter, 0, m_SiteEntity.RootUrl));
             }
         }
 
@@ -148,7 +158,10 @@ namespace RegExSpider.Spider
             foreach (var item in links)
             {
                 if (m_LinksStorage.IsExists(item) == false)
-                    m_LinksStorage.InsertLink(new LinkEntity(handlerDepth + 1, item));
+                {
+                    Interlocked.Increment(ref m_LinksCounter);
+                    m_LinksStorage.InsertLink(new LinkEntity(m_LinksCounter, handlerDepth + 1, item));
+                }
             }
         }
 
