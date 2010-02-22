@@ -9,7 +9,7 @@ namespace RegExSpider.Storage
     public interface ILinksStorage
     {
         //initialize the links storage
-        void InitializeStorage();
+        void InitializeStorage(string[] args);
         void FinalizeStorage();
         //insert a new link to the scan queue.
         void InsertLink(LinkEntity link);

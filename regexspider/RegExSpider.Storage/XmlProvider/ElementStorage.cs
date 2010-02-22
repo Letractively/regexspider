@@ -17,7 +17,7 @@ namespace RegExSpider.Storage.XmlProvider
 
         #region IElementStorage Members
 
-        public void InitializeStorage()
+        public void InitializeStorage(string[] args)
         {
             File.Delete("elements.xml");
             m_XmlTextWriter = new XmlTextWriter("elements.xml", Encoding.UTF8);
